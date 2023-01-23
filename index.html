@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even Odd List</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <h1>Even Odd Lists</h1>
+    <hr/> 
+
+    <form id="even-odd-form" autocomplete="off" target="_blank">
+      <div class="blank-forum"> 
+        <label for="word">word</label> 
+        <input type="text" name="word" id="word"  placeholder="what's your word?" onkeyup="updateWord(this)"> 
+      </div>
+      <div class="even-odd-button">
+        <input type="button" value="Even or Odd?" onclick="handleSubmit()">
+      </div>
+    </form>
+    <section>
+        <h2>Even</h2>
+        <ul id="even"></ul>
+      </section>
+      <section>
+        <h2>Odd</h2>
+        <ul id="odd"></ul>
+      </section>
+
+      <script>
+        let usersWord = ""
+        let oddList = document.getElementById("odd");
+        let evenList = document.getElementById("even");
+
+        function updateWord(element) {
+          usersWord = element.value
+    
+          console.log(usersWord)
+        }
+
+        function handleSubmit() {
+            let newListItem = document.createElement('LI')
+            newListItem.innerText = usersWord
+            
+            if(usersWord.length % 2 === 0) {
+                evenList.appendChild(newListItem)
+                /*put word in even lists*/
+            } else {
+            /*put word in odd list*/
+                oddList.appendChild(newListItem)
+    }
+
+
+            usersWord = ""
+            document.getElementById("even-odd-form").reset()
+  }
+
+      </script>
+</body>
+</html>
